@@ -15,7 +15,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Login to Ducker Hub
-        uses: docker/login-actions@v3
+        uses: docker/login-actions@v2
         with:
           username: ${{ secrets.DOUCKERHUB_USERNAME }}
           password: ${{ secrets.DOUCKERHUB_TOKEN }}
