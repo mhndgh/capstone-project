@@ -20,6 +20,7 @@ jobs:
           username: ${{ secrets.DOUCKERHUB_USERNAME }}
           password: ${{ secrets.DOUCKERHUB_TOKEN }}
   build-and-push-image:
+    runs-on: ubuntu-latest
     steps:
         - name: Build and Push
         uses: docker/build-push-action@v3
