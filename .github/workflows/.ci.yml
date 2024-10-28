@@ -17,13 +17,14 @@ jobs:
       - name: Login to Ducker Hub
         uses: docker/login-action@v3
         with:
-          username: mhndgh
+          username: ${{ secrets.DOUCKERHUB_USERNAME }}
           password: ${{ secrets.DOUCKERHUB_TOKEN }}
-            
-      - name: Build and Push
+  build-and-push-image:
+    steps:
+        - name: Build and Push
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: |
-            mhndgh/capstone-project:latest
-            mhndgh/capstone-project:${{ github.sha }}
+            mhndgh/flask:latest
+            mhndgh/flask:${{ github.sha }}
