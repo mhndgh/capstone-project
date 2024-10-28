@@ -22,10 +22,10 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     steps:
-        - name: Build and Push
+      - name: Build and Push
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: |
-            mhndgh/flask:latest
-            mhndgh/flask:${{ github.sha }}
+            mhndgh/capstone-project:latest
+            mhndgh/capstone-project:${{ github.sha }}
