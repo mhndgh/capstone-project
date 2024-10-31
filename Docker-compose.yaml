@@ -10,6 +10,7 @@ services:
       - ./data
     environment:
       - REDIS_HOST=redis
+      - DB_HOST=db
     
 
   redis:
@@ -29,4 +30,6 @@ services:
       MYSQL_ROOT_PASSWORD: password
     volumes:
       - db-data:/var/lib/mysql
-    
+volumes:
+  db-data:
+  redis-data:
