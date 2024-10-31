@@ -3,24 +3,28 @@ services:
     build: .
     ports:
       - 5000:5000
-    environment:
-      REDIS_HOST: redis
-      DB_HOST: db
-      DB_NAME: mydatabase
-      DB_USER: user
-      DB_PASSWORD: password
     depends_on:
       - redis
       - db
+    volumes:
+      - ./data
+    environment:
+      - REDIS_HOST=redis
+    
 
   redis:
     image: redis
+    volumes:
+      - redis-data:/data
 
   db:
     image: mysql
+    restart: always
     environment:
-      DB_ROOT_PASSWORD: password
-      DB_DATABASE: mydatabase
       DB_USER: user
       DB_PASSWORD: password
-      DB_HOST: db
+      DB_NAME: mydatabase
+      DB_ROOT_PASSWORD: password
+    volumes:
+      - ./data:/var/lib/mysql
+    
