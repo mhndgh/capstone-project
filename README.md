@@ -2,6 +2,8 @@
 This Flask application serves as a simple web interface for adding users and viewing user details. Below is a brief description of the files and functionalities:
 
 
+
+
 - **app.py**: 
   - The main Flask application file.
   - It integrates with **Redis** for caching and **MySQL** for persistent data storage.
