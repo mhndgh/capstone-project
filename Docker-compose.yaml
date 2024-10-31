@@ -23,10 +23,10 @@ services:
     ports:
       - 3306:3306
     environment:
-      DB_USER: user
-      DB_PASSWORD: password
-      DB_NAME: mydatabase
-      DB_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+      MYSQL_ROOT_PASSWORD: password
     volumes:
       - ./data:/var/lib/mysql
     
