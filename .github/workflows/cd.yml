@@ -12,7 +12,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        nodes: ["10.0.2.162", "10.0.2.163"]
+        nodes: ["10.0.2.164", "10.0.2.165"]
 
     steps:
       - name: deploy to ${{ matrix.nodes }}
@@ -23,7 +23,7 @@ jobs:
           DB_HOST: ${{ secrets.DB_HOST }}
 
         run: |
-          sudo ssh-keyscan ${{ matrix.nodes }} >> ~/.ssh/known_hosts
-          sudo echo "$SSH_PRIVATE_KEY" > ~/.ssh/github_actions
-          sudo chmod 600 ~/.ssh/github_actions
-          sudo ssh -i ~/.ssh/github_actions $SSH_USERNAME@${{ matrix.nodes }} "docker kill app && sudo docker rm app && sudo docker pull mhndgh/capstone-project:latest && sudo docker run -d -p 80:5000 -e "REDIS_HOST=${REDIS_HOST}" -e "DB_HOST=${DB_HOST}" --name app mhndgh/capstone-project:latest"
+          ssh-keyscan ${{ matrix.nodes }} >> ~/.ssh/known_hosts
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/github_actions
+          chmod 600 ~/.ssh/github_actions
+          ssh -i ~/.ssh/github_actions $SSH_USERNAME@${{ matrix.nodes }} "docker kill app && sudo docker rm app && sudo docker pull mhndgh/capstone-project:latest && sudo docker run -d -p 80:5000 -e "REDIS_HOST=${REDIS_HOST}" -e "DB_HOST=${DB_HOST}" --name app mhndgh/capstone-project:latest"
