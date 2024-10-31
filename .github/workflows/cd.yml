@@ -28,4 +28,4 @@ jobs:
           ssh-keyscan ${{ matrix.nodes }} >> ~/.ssh/known_hosts
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/github_actions
           chmod 600 ~/.ssh/github_actions
-          ssh -i ~/.ssh/github_actions $SSH_USERNAME@${{ matrix.nodes }} "docker kill app && docker rm app && docker pull mhndgh/capstone-project:latest && docker run -d -p 80:5000 -e 'REDIS_HOST=${REDIS_HOST}' -e 'DB_HOST=${DB_HOST}' --name app mhndgh/capstone-project:latest"
+          ssh -i ~/.ssh/github_actions $SSH_USERNAME@${{ matrix.nodes }} "docker stop app || true && docker rm app || true && docker pull mhndgh/capstone-project:latest && docker run -d -p 80:5000 -e 'REDIS_HOST=${REDIS_HOST}' -e 'DB_HOST=${DB_HOST}' --name app mhndgh/capstone-project:latest"
