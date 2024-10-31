@@ -14,7 +14,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        nodes: ["10.0.2.164", "10.0.2.165"]
+        nodes: ["10.0.2.213", "10.0.2.214"]
 
     steps:
       - name: deploy to ${{ matrix.nodes }}
